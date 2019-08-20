@@ -1,0 +1,52 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import './highlight.scss';
+
+html,
+body,
+div,
+h1,
+h2,
+h3,
+header,
+section,
+article,
+main,
+footer,
+ul,
+ol,
+li,
+a,
+p{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: content-box;
+    box-shadow: none;
+    color: inherit;
+    word-break: normal;
+    word-wrap: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+em{
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul,
+li{
+    list-style: none;
+}
+
+code{
+    background-color: #ddd;
+}
