@@ -27,6 +27,13 @@ p{
     word-wrap: normal;
 }
 
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper{
+    height: 100%;
+}
+
 h1,
 h2,
 h3,

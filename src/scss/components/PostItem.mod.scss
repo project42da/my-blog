@@ -1,6 +1,9 @@
 .wrap{
-    margin: 0 auto;
-    width: 640px;
+    @media (min-width: 768px){
+        width: 640px;
+        margin: 0 auto;
+    }
+
     font-size: 14px;
     padding: 0 15px;
     color: #111;
