@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import style from 'src/scss/components/Header.mod.scss';
+import style from 'src/scss/components/header.mod.scss';
 
 class Header extends React.Component {
     render() {
@@ -10,14 +10,20 @@ class Header extends React.Component {
 
         if (location.pathname === rootPath) {
             header = (
-                <Link to={`/`}><h1>{title}</h1></Link>
+                <Link to={`/`} className={style.link}><h1 className={style.logo}>{title}</h1></Link>
             )
         } else {
             header = (
-                <Link to={`/`}><h1>{title}</h1></Link>
+                <Link to={`/`} className={style.link}><h1 className={style.logo}>{title}</h1></Link>
             )
         }
-        return <header className={style.header}>{header}</header>;
+        return (
+            <header className={style.header}>
+                <div className={style.inner}>
+                    {header}
+                </div>
+            </header>
+        );
     }
 }
 

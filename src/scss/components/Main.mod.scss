@@ -1,6 +1,13 @@
 .main{
     min-height: 100%;
-    padding-top: 48px;
-    padding-bottom: 120px;
     box-sizing: border-box;
+
+    @media (min-width: 768px){
+        width: 670px;
+        margin: 0 auto;
+    }
+
+    font-size: 14px;
+    padding: 48px 15px 120px;
+    color: #111;
 }

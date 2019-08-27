@@ -1,22 +1,24 @@
 import React from "react";
 import { Link } from "gatsby";
+import style from 'src/scss/components/postList.mod.scss';
 
 const PostList = props => {
   const { posts } = props;
 
   return (
-    <div>
+    <section>
       {posts.map(({ node:post }) => {
-        const title = post.frontmatter.title || post.fields.slug
+        const title = post.frontmatter.title || post.fields.slug;
+
         return (
-          <article key={post.fields.slug}>
+          <article key={post.fields.slug} className={style.post_item}>
             <header>
-              <h3>
+              <h3 className={style.post_item__title}>
                 <Link style={{ boxShadow: `none` }} to={post.fields.slug}>
                   {title}
                 </Link>
               </h3>
-              <small>{post.frontmatter.date}</small>
+              <time>{post.frontmatter.date}</time>
             </header>
             <section>
               <p
@@ -28,7 +30,7 @@ const PostList = props => {
           </article>
         )
       })}
-    </div>
+    </section>
   )
 }
 

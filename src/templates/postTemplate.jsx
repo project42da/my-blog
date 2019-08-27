@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import Bio from "src/components/bio";
 import Layout from "src/components/layout";
 import SEO from "src/components/seo";
-import style from 'src/scss/components/PostItem.mod.scss';
+import style from 'src/scss/components/postTemplate.mod.scss';
 
 class BlogPostTemplate extends React.Component {
   render() {

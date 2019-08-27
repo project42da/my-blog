@@ -74,7 +74,12 @@ const SEO = ({ description, lang, meta, title }) => {
 
 SEO.defaultProps = {
   lang: `ko`,
-  meta: [],
+  meta: [
+    { 
+      name: `viewport`,
+      content: `width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no, viewport-fit=cover`
+    }
+  ],
   description: ``,
 }
 

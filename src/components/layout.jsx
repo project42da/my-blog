@@ -1,7 +1,7 @@
 import React from "react";
-import Header from 'src/components/Header';
-import Main from 'src/components/Main';
-import Footer from 'src/components/Footer';
+import Header from 'src/components/header';
+import Main from 'src/components/main';
+import Footer from 'src/components/footer';
 
 class Layout extends React.Component {
   render() {
@@ -20,4 +20,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout
+export default Layout;

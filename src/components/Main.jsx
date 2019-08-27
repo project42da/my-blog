@@ -1,10 +1,12 @@
 import React from 'react';
-import style from 'src/scss/components/Main.mod.scss';
+import style from 'src/scss/components/main.mod.scss';
 
 const Main = props => {
     const { children } = props;
     return(
-        <main className={style.main}>{children}</main>
+        <main className={style.main}>
+            {children}
+        </main>
     )
 }
 
