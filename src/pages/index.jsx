@@ -13,8 +13,7 @@ class BlogIndex extends React.Component {
     const posts = data.allMarkdownRemark.edges;
 
     let tags = posts.reduce((acc, { node:post }) => {
-      const result = post.frontmatter.description.split(' ');
-      return [...acc, ...result]
+      return [...acc, ...post.frontmatter.tags];
     }, []);
 
     tags = new Set(tags);
@@ -49,6 +48,8 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
+            category
           }
         }
       }

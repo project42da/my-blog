@@ -31,7 +31,7 @@ const PostList = props => {
         )
       })}
     </section>
-  )
+  );
 }
 
 export default PostList;
