@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import PostList from 'src/components/postList';
 import Layout from 'src/components/layout';
 import SEO from 'src/components/seo';
-import TagList from 'src/components/tag/tagList';
 import 'src/scss/global.scss';
 
 class BlogIndex extends React.Component {
@@ -12,16 +11,9 @@ class BlogIndex extends React.Component {
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMarkdownRemark.edges;
 
-    let tags = posts.reduce((acc, { node:post }) => {
-      return [...acc, ...post.frontmatter.tags];
-    }, []);
-
-    tags = new Set(tags);
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title='모든 게시물' />
-        <TagList tags={tags}/>
         <PostList posts={posts}/> {/* 컨텐츠 커플링 */}
       </Layout>
     )
