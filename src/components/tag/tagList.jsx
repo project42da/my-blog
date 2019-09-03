@@ -4,11 +4,12 @@ import style from 'src/scss/components/tag/tagList.mod.scss';
 
 const TagList = props => {
     const { tags } = props;
+    
     return (
         <ul className={style.tag_list}>
-            {[...tags].map(tag => {
-                return <TagItem tag={tag} key={tag}/>;
-            })}
+            {tags.map(tag => (
+                <TagItem tag={tag} key={tag.fieldValue} />
+            ))}
         </ul>
     );
 } 
