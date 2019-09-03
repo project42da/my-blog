@@ -2,6 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import SEO from 'src/components/seo';
 import Layout from 'src/components/layout';
+import PostItem from 'src/components/postItem';
 import style from 'src/scss/tagsTemplate.mod.scss';
 
 const Tags = ({ pageContext, data, location }) => {
@@ -15,13 +16,9 @@ const Tags = ({ pageContext, data, location }) => {
       <span className={style.tag_result_count}>총 <strong>{totalCount}</strong>개</span>
       <ul>
         {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const { title } = node.frontmatter
           return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
-            </li>
-          )
+            <PostItem post={node}/>
+          );
         })}
       </ul>
       {/*
@@ -50,6 +47,9 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            date(formatString: "MMMM DD, YYYY")
+            description
+            tags
           }
         }
       }
