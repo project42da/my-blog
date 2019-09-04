@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `<c.init/>`,
     author: `MINWOO CHUN`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `나만 보려고 만든 블로그`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
   },
   plugins: [

@@ -1,55 +1,44 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Image from "gatsby-image";
+// import Image from "gatsby-image";
+import style from 'src/scss/components/bio.mod.scss';
 
-const Bio = () => {
-  const data = useStaticQuery(graphql`
-    query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          author
+const query = graphql`
+  query BioQuery {
+    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      childImageSharp {
+        fixed(width: 36, height: 36) {
+          ...GatsbyImageSharpFixed
         }
       }
     }
-  `)
+    site {
+      siteMetadata {
+        author
+        description
+      }
+    }
+  }
+`;
 
-  const { author } = data.site.siteMetadata
+const Bio = () => {
+  const data = useStaticQuery(query);
+  const { author, description } = data.site.siteMetadata;
+
   return (
-    <div
-      style={{
-        display: `flex`,
-      }}
-    >
-      <Image
+    <div className={style.bio}>
+      {/* <Image
+        className={style.bio_thumb}
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        style={{
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
         imgStyle={{
           borderRadius: `50%`,
         }}
-      />
-      <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-      </p>
+      /> */}
+      <div className={style.bio_content}>
+        <strong>{author}</strong>
+        <p className={style.bio_description}>{description}</p>
+      </div>
     </div>
   );
 }
