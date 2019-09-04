@@ -9,7 +9,8 @@ class BlogIndex extends React.Component {
   render() {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
-    const posts = data.allMarkdownRemark.edges;
+    const posts = data.allMarkdownRemark.edges.filter(({node}) => 
+      node.frontmatter.title !== 'about');
 
     return (
       <Layout location={this.props.location} title={siteTitle}>

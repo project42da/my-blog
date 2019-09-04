@@ -19,7 +19,7 @@ const PostItem = props => {
       </header>
       <section>
         <ul className={style.post_item__tag_list}>
-          {post.frontmatter.tags.map((tag,index) => <PostItemTag tag={tag} key={`${tag}-${index}`}/>)}
+          {post.frontmatter.tags && post.frontmatter.tags.map((tag,index) => <PostItemTag tag={tag} key={`${tag}-${index}`}/>)}
         </ul>
       </section>
     </article>
