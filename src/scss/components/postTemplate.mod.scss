@@ -46,3 +46,23 @@
     font-size: 22px;
 }
 
+.page_move_area{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    &::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+.page_move_prev{
+    float: left;
+    color: #ccc;
+}
+
+.page_move_next{
+    float: right;
+    color: #ccc;
+}

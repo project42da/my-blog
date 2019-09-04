@@ -10,11 +10,7 @@ class Layout extends React.Component {
       <>
         <Header location={location} title={title}/>
         <Main children={children}/>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
+        <Footer/>
       </>
     )
   }

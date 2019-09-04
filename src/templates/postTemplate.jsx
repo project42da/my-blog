@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-
-import Bio from "src/components/bio";
 import Layout from "src/components/layout";
 import SEO from "src/components/seo";
 import style from 'src/scss/components/postTemplate.mod.scss';
@@ -25,37 +23,21 @@ class BlogPostTemplate extends React.Component {
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr/>
-          <footer>
-            <Bio />
-          </footer>
         </article>
 
-        <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
+        <div className={style.page_move_area}>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev" className={style.page_move_prev}>
+              ← {previous.frontmatter.title}
+            </Link>
+          )}
+        
+          {next && (
+            <Link to={next.fields.slug} rel="next" className={style.page_move_next}>
+              {next.frontmatter.title} →
+            </Link>
+          )}
+        </div>
       </Layout>
     )
   }
@@ -68,7 +50,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
