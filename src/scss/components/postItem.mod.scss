@@ -15,4 +15,10 @@
     &__description{
         margin-top: 10px;
     }
+
+    &__tag_list{
+        margin-top: 8px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
