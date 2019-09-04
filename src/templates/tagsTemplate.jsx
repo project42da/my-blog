@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import SEO from 'src/components/seo';
 import Layout from 'src/components/layout';
 import PostItem from 'src/components/postItem';
@@ -21,11 +21,6 @@ const Tags = ({ pageContext, data, location }) => {
           );
         })}
       </ul>
-      {/*
-        This links to a page that does not yet exist.
-        We'll come back to it!
-      */}
-      <Link to="/tags">All tags</Link>
     </Layout>
   )
 }

@@ -19,6 +19,7 @@ const Footer = () => {
         <footer className={style.footer}>
             <div className={style.inner}>
                 <nav className={style.link_list}>
+                    <Link to="/about" className={style.link}>소개</Link>
                     <Link to="/" className={style.link}>글 목록</Link>
                     <Link to="/tags" className={style.link}>태그</Link>
                 </nav>
