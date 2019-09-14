@@ -10,9 +10,9 @@ title: 'about'
 <br>
 
 ### PROJECT
-- **Infinite Scroll**
-- **My Read**
-- **Dev Blog**
+- [**Infinite Scroll**]()
+- [**My Read**]()
+- [**Dev Blog**]()
 
 <br>
 

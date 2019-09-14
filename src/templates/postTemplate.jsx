@@ -32,7 +32,7 @@ class BlogPostTemplate extends React.Component {
             </Link>
           )}
         
-          {next && (
+          {next && next.frontmatter.title !== 'about' && (
             <Link to={next.fields.slug} rel="next" className={style.page_move_next}>
               {next.frontmatter.title} →
             </Link>
