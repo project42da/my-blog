@@ -10,7 +10,7 @@ const Tags = ({ pageContext, data, location }) => {
   const { edges, totalCount } = data.allMarkdownRemark
   
   return (
-    <Layout location={location} title={`<c.init/>`}>
+    <Layout location={location} title={`🤔 나만 보려고 만든 블로그`}>
       <SEO title={`${tag} | 태그`} />
       <h2 className={style.title}>{tag}</h2>
       <span className={style.tag_result_count}>총 <strong>{totalCount}</strong>개</span>

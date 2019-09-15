@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "gatsby";
 import PostItemTag from 'src/components/PostItemTag';
 import style from 'src/scss/components/postItem.mod.scss';
+import "katex/dist/katex.min.css";
 
 const PostItem = props => {
   const { post } = props;

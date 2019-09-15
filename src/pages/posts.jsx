@@ -18,6 +18,7 @@ class PostPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title='모든 게시물' />
+        <span className={'result_count'}>총 <strong>{posts.length}</strong>개</span>
         <PostList posts={posts} /> {/* 컨텐츠 커플링 */}
       </Layout>
     )
