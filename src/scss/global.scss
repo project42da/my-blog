@@ -23,7 +23,7 @@ p{
     box-sizing: content-box;
     box-shadow: none;
     color: inherit;
-    word-break: normal;
+    word-break: keep-all;
     word-wrap: normal;
 }
 
@@ -60,4 +60,11 @@ li{
 
 code{
     background-color: #ddd;
+}
+
+blockquote{
+    opacity: 0.6;
+    margin: 10px 20px;
+    text-align: center;
+    font-style: italic;
 }

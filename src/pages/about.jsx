@@ -7,9 +7,9 @@ import style from 'src/scss/pages/about.mod.scss';
 export const pageQuery = graphql`
   {
     site {
-        siteMetadata {
-          title
-        }
+      siteMetadata {
+        title
+      }
     },
     allMarkdownRemark {
       edges {
@@ -33,9 +33,12 @@ const AboutPage = props => {
 
   return (
     <Layout location={props.location} title={title}>
-      <SEO title={title} />
-      <h1 className={style.title}>소개</h1>
-      <section className={style.about} dangerouslySetInnerHTML={{__html: about.html}}/>
+      <SEO title={'소개'} />
+      <article className={style.about}>
+        <h1 className={style.title}>소개</h1>
+        <section className={style.about} dangerouslySetInnerHTML={{__html: about.html}}/>
+        <hr/>
+      </article>
     </Layout>
   );
 };

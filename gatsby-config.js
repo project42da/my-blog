@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: `<c.init/>`,
-    author: `MINWOO CHUN`,
-    description: `나만 보려고 만든 블로그`,
+    title: `🤔 나만 보려고 만든 블로그`,
+    author: `42`,
+    description: `코딩 잘하고 싶다.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
   },
   plugins: [

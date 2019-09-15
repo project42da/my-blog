@@ -4,6 +4,7 @@ import style from 'src/scss/components/header.mod.scss';
 
 class Header extends React.Component {
     render() {
+        // TODO: Title 쿼리 별도 분리
         const { location, title } = this.props;
         const rootPath = `${__PATH_PREFIX__}/`;
         let header;

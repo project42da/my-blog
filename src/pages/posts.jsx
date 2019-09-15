@@ -5,27 +5,26 @@ import Layout from 'src/components/layout';
 import SEO from 'src/components/seo';
 import 'src/scss/global.scss';
 
-class BlogIndex extends React.Component {
+class PostPage extends React.Component {
   render() {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     let posts = [];
     if (data.allMarkdownRemark.edges) {
       posts = data.allMarkdownRemark.edges.filter(({ node }) =>
-        node.frontmatter.title !== 'about').splice(0, 5);
+        node.frontmatter.title !== 'about');
     }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title='최근 글' /> 
-        <strong style={{marginTop: "30px", display: "block"}}>최근 게시물</strong>
+        <SEO title='모든 게시물' />
         <PostList posts={posts} /> {/* 컨텐츠 커플링 */}
       </Layout>
-    );
+    )
   }
 }
 
-export default BlogIndex;
+export default PostPage;
 
 export const pageQuery = graphql`
   query {
