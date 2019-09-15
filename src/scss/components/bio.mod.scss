@@ -1,0 +1,28 @@
+.bio{
+    height: 52px;
+    line-height: normal;
+
+    &_thumb{
+        float: left;
+        margin-right: 10px;
+    }
+
+    &_content{
+        font-size: 14px;
+    }
+
+    &_name{
+        line-height: 20px;
+    }
+
+    &_description{
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: 12px;
+        line-height: 16px;
+        max-height: 32px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

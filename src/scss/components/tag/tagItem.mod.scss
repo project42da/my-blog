@@ -1,0 +1,19 @@
+.tag_item{
+    display: inline-block;
+    border-radius: 15px;
+    background-color: #eee;
+    color: #333;
+    margin-right: 4px;
+    margin-bottom: 8px;
+
+    &__focused{
+        background-color: #03f4b5;
+        color: #fff;
+    }
+}
+
+.tag_item__name{
+    line-height: 20px;
+    padding: 5px 10px;
+    display: block;
+}

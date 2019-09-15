@@ -1,0 +1,24 @@
+:not(pre) > code.language-text{
+    background-color: #eee;
+    color: #2d2d2d;
+    font-size: 14px;
+    padding: 0.1em 0.5em;
+}
+
+pre[class*="language-"] {
+    background-color: #17162a;
+    margin: 10px 0;
+    border-radius: 6px;
+}
+
+.token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
+    color: #03f4b5;
+}
+
+.token.boolean, .token.number, .token.function {
+    color: #f04994;
+}
+
+.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+    color: #615e5e;
+}

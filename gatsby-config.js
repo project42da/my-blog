@@ -1,12 +1,11 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    title: `🤔 나만 보려고 만든 블로그`,
+    author: `42`,
+    description: `코딩 잘하고 싶다.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `kylemathews`,
-    },
   },
   plugins: [
     {
@@ -14,6 +13,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/about`,
+        name: `about`,
       },
     },
     {
@@ -69,10 +75,18 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `gatsby-plugin-sass`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        sassRuleTest: /\.s(a|c)ss$/,
+        sassRuleModulesTest: /\.mod\.s(a|c)ss$/,
       },
     },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        pages: path.join(__dirname, 'src/pages')
+      }
+    }
   ],
 }

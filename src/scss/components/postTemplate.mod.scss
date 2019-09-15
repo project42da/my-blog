@@ -1,0 +1,68 @@
+.wrap{
+    margin-top: 30px;
+    line-height: 26px;
+
+    h2,
+    h3,
+    h4{
+        font-size: 18px;
+        line-height: 30px;
+    }
+    
+    li{
+        margin-left: 1em;
+        position: relative;
+        
+        &::before{
+            content: '·';
+            position: absolute;
+            left: -1em;
+        }
+    }
+
+    ol > li{
+        // 인덱스가 11개 이상으로는 안만들거라고 가정
+        @for $i from 1 to 10 {
+            &:nth-of-type(#{$i})::before{
+                content: '#{$i}.';
+            }
+        }
+    }
+
+    hr{
+        margin-top: 40px;
+        margin-bottom: 40px;
+        height: 1px;
+        background-color: #eee;
+        border: 0;
+    }
+}
+
+.header{
+    margin-bottom: 30px;
+}
+
+.title{
+    font-size: 22px;
+}
+
+.page_move_area{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    &::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+.page_move_prev{
+    float: left;
+    color: #ccc;
+}
+
+.page_move_next{
+    float: right;
+    color: #ccc;
+}
