@@ -16,7 +16,11 @@ ul,
 ol,
 li,
 a,
-p{
+p,
+strong,
+em,
+blockquote
+{
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
@@ -65,7 +69,6 @@ code{
 blockquote{
     opacity: 0.6;
     margin: 10px 20px;
-    text-align: center;
     font-style: italic;
 }
 
