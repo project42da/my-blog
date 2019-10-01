@@ -22,3 +22,28 @@ pre[class*="language-"] {
 .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
     color: #615e5e;
 }
+
+.gatsby-highlight-code-line{
+    display: block;
+    margin-left: -1em;
+    margin-right: -1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #e8edf2;
+    background-color: rgba(33, 150, 243, 0.15);
+    border: 1px solid #1a4b72;
+    margin-bottom: -1px;
+    margin-top: -1px;
+
+    .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
+        color: #01ff44;;
+    }
+    
+    .token.boolean, .token.number, .token.function {
+        color: #ff0b79;
+    }
+    
+    .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+        color: #767676;
+    }
+}
