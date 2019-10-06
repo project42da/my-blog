@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
         <article className={style.wrap}>
           <header className={style.header}>
             <h1 className={style.title}>{post.frontmatter.title}</h1>
-            <time>{post.frontmatter.date}</time>
+            <time className={style.time}>{post.frontmatter.date}</time>
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr/>

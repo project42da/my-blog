@@ -50,18 +50,45 @@ https://hamait.tistory.com/930
 
 각 박스는 이벤트루프의 단계를 의미하며, 각 단계는 실행할 콜백의 큐를 가진다. 
 
-- timers: 이 단계는 setTimeout()과 setInterval()로 스케줄링한 콜백을 실행합니다.
+- timers: 이 단계는 `setTimeout()`과 `setInterval()`로 스케줄링한 콜백을 실행합니다.
 - pending callbacks: 다음 루프로 연기된 I/O 콜백들을 실행합니다.
 - idle, prepare: 내부적으로만 사용됩니다.
-- poll: 새로운 I/O 이벤트를 가져옵니다. I/O와 연관된 콜백(클로즈 콜백, 타이머로 스케줄링된 콜백, setImmediate()를 제외한 거의 모든 콜백)을 실행합니다. 노드는 필요하다면 이곳에서 블록되기도 한다.
+- poll: 새로운 I/O 이벤트를 가져옵니다. I/O와 연관된 콜백(클로즈 콜백, 타이머로 스케줄링된 콜백, `setImmediate()`를 제외한 거의 모든 콜백)을 실행합니다. 노드는 필요하다면 이곳에서 블록되기도 한다.
 - check: `setImmediate()`을 통해 등록된 콜백들이 호출된다.
 - close callbacks: 일부 close 이벤트 콜백들이 실행된다. (예를 들어 `socket.on('close', ...)`)
+
+### Timers
+
+타이머 단계의 콜백은 지정한 시간이 지난 후에 스케쥴링 될 수 있는 가장 빠른 시간에 실행된다. 즉 지정한 시간에 실행되는게 아니라 지정된 시간 후 가능한 가장 빠른 시점에 실행된다.
+
+
+
+```js
+const fs = require('fs');
+
+const timeoutScheduled = Date.now();
+setTimeout(() => {
+  const delay = Date.now() - timeoutScheduled;
+
+  console.log(`${delay}ms have passed since I was scheduled`);
+}, 100);
+
+// 이 작업이 완료되는데 95ms가 걸린다고 가정한다.
+fs.readFile('/path/to/file', () => {
+  const startCallback = Date.now();
+
+  // 10ms가 걸릴 어떤 작업을 진행한다.
+  while (Date.now() - startCallback < 10) { /* 10ms 동안 실행 */}
+});
+```
+
+fs.readFile() 이 파일읽기를 끝마치고 10ms가 걸리는 콜백이 poll큐에 추가되어 실행된 다음 완료된 뒤 가장 빠른 타이머의 지정된 시간에 도달했는지 확인하고 도달했다면 타이머의 콜백을 실행하기 위해 Timers단계로 돌아간다. 이때 이미 100ms가 지난 105ms에 콜백이 실행된다.
 
 
 ```js
 doRequest();
 fs.readFile('multitask.js', 'utf8', () => {
-    console.log('fs:', Date.now() - start());
+   console.log('fs:', Date.now() - start());
 });
 doHash();
 doHash();

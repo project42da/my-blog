@@ -2,11 +2,25 @@
     margin-top: 30px;
     line-height: 26px;
 
-    h2,
-    h3,
-    h4{
+    h2{
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 6px;
+    }
+
+    h3{
         font-size: 18px;
         line-height: 30px;
+    }
+
+    h4{
+        font-size: 16px;
+        line-height: 30px;
+        color: #222;
+    }
+
+    ul{
+        margin-top: 4px;
     }
     
     li{
@@ -39,11 +53,18 @@
 }
 
 .header{
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .title{
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.time{
+    display: block;
+    margin-top: 8px;
+    line-height: 18px;
 }
 
 .page_move_area{
