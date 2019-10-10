@@ -1,6 +1,7 @@
 ---
 title: "React Hooks (기본)"
 date: "2019-09-30 12:58:00 +0900"
+description: 'react hooks에 대한 기본적인 이해를 돕기 위한 글이다. useState와 useEffect에 대해 다룬다.'
 categories: React
 tags: ["React", "hooks"]
 ---

@@ -17,7 +17,7 @@ const TagsPage = props => {
 
   return (
     <Layout location={props.location} title={title}>
-      <SEO title={title} />
+      <SEO title={'모든 태그 목록'} />
       <h1 className={style.title}>Tags</h1>
       <TagList tags={group}/>
     </Layout>

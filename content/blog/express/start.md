@@ -1,6 +1,7 @@
 ---
 title: "Express 시작하기"
 date: "2019-10-06 12:58:00 +0900"
+description: 'express의 기본적인 기능들 HTTP메소드(all, post, get 등), 미들웨어, express.static()등에 대한 글.'
 categories: express
 tags: ["express"]
 ---
