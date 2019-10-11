@@ -1,12 +1,13 @@
 ---
 title: "React Hooks (기본)"
 date: "2019-09-30 12:58:00 +0900"
+description: 'react hooks에 대한 기본적인 이해를 돕기 위한 글이다. useState와 useEffect에 대해 다룬다.'
 categories: React
-tags: ["React", "hooks"]
+tags: ["react", "hooks"]
 ---
 
 리액트 훅을 사용하면 함수형 컴포넌트에서도 클래스형 컴포넌트의 기능(상태값, 생명주기 등)을 사용할 수 있게 된다.
-훅은 단순한 함수이기 때문에 손쉽개 여러 컴포넌트에서 재사용 가능한 코드를 만들어 낼 수 있고, 클래스형 컴포넌트에서 변화율 혹은 관련도와 관계없이 라이프사이클에 묶여 여러코드가 뒤엉켜 작성되어야 했던것과 달리, 훅을 사용하면 **분리 및 관리하기에 용이**하다.(Information Expert) 이를 통해 필요한 로직과 상태를 캡슐화(capsulization)하여 커스텀 훅을 만들어 낼 수도 있다. (**[useDebounce 훅](/web/throttle_debounce/)**) 이미 많은 리액트 관련 라이브러리들이 훅을 지원하고 있다.
+훅은 단순한 함수이기 때문에 손쉽게 여러 컴포넌트에서 재사용 가능한 코드를 만들어 낼 수 있고, 클래스형 컴포넌트에서 변화율 혹은 관련도와 무관하게 라이프사이클에 묶여 여러코드가 뒤엉켜 작성되어야 했던것과 달리, 훅을 사용하면 **분리 및 관리하기에 용이**하다.(Information Expert) 이를 통해 필요한 로직과 상태를 캡슐화(capsulization)하여 커스텀 훅을 만들어 낼 수도 있다. (**[useDebounce 훅](/web/throttle_debounce/)**) 이미 많은 리액트 관련 라이브러리들이 훅을 지원하고 있다.
 
 <br>
 
@@ -22,7 +23,7 @@ tags: ["React", "hooks"]
 import React, { useState } from 'react';
 ```
 
-`useState` 훅은 어떤 값을 받아 배열을 반환하는 단순한 함수이다. 배열의 첫번째 요소는 상태값이고 `useState`를 호출할때 넘겨준 값이 초기값이 된다. 배열의 두번째 요소는 `setState` 메소드와 유사한 상태값을 변경하는 함수이다. 일반적으로 두 요소를 비구조화 할당(Destructuring Assignment)을 이용해 사용한다.
+`useState` 훅은 어떤 값을 받아 배열을 반환하는 단순한 함수이다. 배열의 첫번째 요소는 상태값이고 `useState`를 호출할때 넘겨준 값이 초기값이 된다. 배열의 두번째 요소는 `setState` 메소드와 유사한 상태값을 변경하는 함수이다. 일반적으로 두 요소를 비구조화 할당(Destructuring Assignment)을 통해 변수에 할당해 사용한다.
 
 ```js
 const Counter = () => {
@@ -69,7 +70,7 @@ const Person = () => {
 
 ### useState 구현하기
 
-다음은 클로저를 사용해 만든 간단한 React 복사본이다. 위에서 살펴본 `useState` 와 함께 필요한 몇가지 변수들이 구현되어있다. 몇가지 주목할 부분을 살펴보자.
+다음은 클로저를 사용해 만든 간단한 React 복사본이다. 위에서 살펴본 `useState` 와 함께 필요한 몇가지 변수들이 구현되어있다. 몇가지 중요한 부분들만 살펴보자.
 
 <br>
 
@@ -267,7 +268,7 @@ App = render(Counter);
 - 훅은 함수가 참조하는 인덱스 변수(역시 클로저)를 통해 배열에 값을 할당하고 가져오는것 뿐이다.(Not Magic, just Arrays)
 
 
-<br>
+<hr>
 
 ### 참고
 

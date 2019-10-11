@@ -7,8 +7,8 @@ const TagList = props => {
     
     return (
         <ul className={style.tag_list}>
-            {tags.map(tag => (
-                <TagItem tag={tag} key={tag.fieldValue} />
+            {tags.map((tag, index) => (
+                <TagItem tag={tag} key={index} />
             ))}
         </ul>
     );

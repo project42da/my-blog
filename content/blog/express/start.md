@@ -1,13 +1,16 @@
 ---
 title: "Express 시작하기"
 date: "2019-10-06 12:58:00 +0900"
+description: 'express의 기본적인 기능들 HTTP메소드(all, post, get 등), 미들웨어, express.static()등에 대한 글.'
 categories: express
 tags: ["express"]
 ---
 
 
 익스프레스(Express)는 Node.js를 위한 웹프레임워크의 하나로, 웹애플리케이션, API 개발을 위해 설계되었다. 
-수많은 HTTP유틸리티 메소드와 미들웨어를 사용해 쉽고 빠르게 강력한 API를 만들수 있으며, Node.js의 사실상의 표준 서버 프레임워크로 불리고 있다.
+수많은 HTTP유틸리티 메소드와 미들웨어를 사용해 쉽고 빠르게 강력한 API를 만들수 있으며, **사실상 Node.js의 표준 서버 프레임워크**로 불리고 있다.
+
+<br>
 
 Express는 어떠한 형태를 강요하지 않는(Unopinionated) 프레임워크이다. 
 내부에서 제안하는 툴들이 포함되어있는 루비온레일즈와 같은 프레임워크와는 달리, 아무것도 정해져있지 않아 자유롭게 원하는 툴을 추가 가능하지만, 동시에 프레임워크 자체에서 도움 받을 수 있는 것이 매우 적다는 단점이 있다.
@@ -16,7 +19,7 @@ Express는 어떠한 형태를 강요하지 않는(Unopinionated) 프레임워�
 
 ### Express로 간단한 웹서버 만들기
 
-흔히 Express 관련 튜토리얼을 보면 다음과 같은 코드가 나온다. 기본적인 웹서버이다. `express` 모듈을 불러오면 `module.exports` 를 통해 `createApplication` 이라는 함수를 반환한다. 이 함수를 통해 Express 애플리케이션을 실행한다.
+흔히 Express 관련 튜토리얼을 보면 다음과 같은 코드가 나온다. 기본적인 웹서버이다. `express` 모듈은 `module.exports` 를 통해 `createApplication` 이라는 함수를 불러온다. 이 함수를 통해 Express 애플리케이션을 실행한다.
 
 <br>
 
@@ -84,7 +87,7 @@ app.all('/', (req,res) => {
 });
 ```
 
-처음 특정 경로를 요청하면 상태코드 **200 OK**을 받게되지만, 이후로는 **304 Not modified**를 받는다. Express가 HTTP Body를 인코딩해 리소스가 변경되었는지 확인하고 Etag를 생성해 버전을 식별하고 상태코드를 알아서 설정하기 때문이다.
+처음 특정 경로를 요청하면 상태코드 **200 OK**을 받게되지만, 이후로는 **304 Not modified**를 받는다. Express가 HTTP Body를 인코딩해 리소스가 변경되었는지 확인하고 **Etag를 생성해 버전을 식별**하고 상태코드를 알아서 설정하기 때문이다.
 
 <br>
 
@@ -136,12 +139,16 @@ function middleware(req,res,next){
 ```js
 app.use('/posts', (req,res,next) => {
   logger(req,res);
+// highlight-start
   next(); // 다음 미들웨어를 실행한다.
+// highlight-end
 });
 
 app.all('/posts', (req, res, next) => {
   doSomethingWithDB();
-  next(); // 다음 미들웨어를 실행한다.
+// highlight-start
+  next();
+// highlight-end
 });
 
 app.get('/posts', (req, res, next) => {
@@ -154,7 +161,7 @@ app.all('/posts', (req, res, next) => {
 });
 ```
 
-<br>
+<hr>
 
-### 참조
+### 참고
 - https://expressjs.com/

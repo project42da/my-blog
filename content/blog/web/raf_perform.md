@@ -123,7 +123,7 @@ function bindRaf(fn, throttle){
 
 <br>
 
-### 참조
+### 참고
 
 - [avoid-large-complex-layouts-and-layout-thrashing](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=ko)
 - [preventing-layout-thrashing](http://wilsonpage.co.uk/preventing-layout-thrashing/)

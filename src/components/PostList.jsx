@@ -6,7 +6,7 @@ const PostList = props => {
 
   return (
     <section>
-      {posts.map(({ node }) => <PostItem post={node}/>)}
+      {posts.map(({ node },index) => <PostItem key={index} post={node}/>)}
     </section>
   );
 }

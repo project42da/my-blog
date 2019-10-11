@@ -163,5 +163,5 @@ if(!!prefix){
 
 <br>
 
-### 참조
+### 참고
 - https://gist.github.com/paulirish/1579671

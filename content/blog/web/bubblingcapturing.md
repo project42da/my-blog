@@ -10,11 +10,15 @@ tags: ["javascript", "bubbing&capturing"]
 **이벤트 버블링**은 특정 DOM에서 이벤트가 발생하면 가장 하위 DOM부터 상위의 부모 DOM으로 한단계씩 전파된다.
 반면 **이벤트 캡쳐링**은 최상위 부모DOM부터 가장 하위의 DOM까지 부모에서부터 전파되는 것을 의미한다. 
 
+<br>
 
 ![eventflow](https://user-images.githubusercontent.com/16536810/64917913-891c9800-d7d1-11e9-90ee-eeed1a45d088.png)
 
 
 (Eventflow - [DOM-Level-3-Events](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture))
+
+
+<br>
 
 다음은 버블링과 캡쳐링에따라 이벤트가 어떤 순서로 호출되는지 보여준다.
 
@@ -73,6 +77,6 @@ target.addEventListener(type, listener[, useCapture]);
 
 ---
 
-### 참조
+### 참고
 - 속깊은 자바스크립트
 - [DOM-Level-3-Events](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)

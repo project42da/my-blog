@@ -61,7 +61,7 @@ Chrome 53버전부터 애니메이션 성능과 그래픽 성능 개선하기 �
 
 
 
-### 참조
+### 참고
 
 - [css-will-change-transform-rasterization/](https://googlechrome.github.io/samples/css-will-change-transform-rasterization/)
 - [greensock](https://greensock.com/will-change)
