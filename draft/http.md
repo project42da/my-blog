@@ -5,12 +5,6 @@ categories: 네트워크
 tags: ["HTTP", "네트워크"]
 ---
 
-socket.io를 가지고 놀때 TCP와 UDP에 대해 공부해야 할지에 대해 잠시 고민했었지만, 깊은 수준까지 들어가지 않아서 였는지 불필요했다.
-
-하지만 HTTP에 대해서는 어느정도 기본적인 지식은 가지고 있을 필요가 있다. 
-
-<br>
-
 ### 헤더
 
 <br>
@@ -18,7 +12,7 @@ socket.io를 가지고 놀때 TCP와 UDP에 대해 공부해야 할지에 대해
 ### 메소드
 
 - **GET** : 웹서버측에 리소스 요청한다.
-    - 조건부 요청 : 캐시를 가지고 있지 않은 경우 `200 OK` 상태로 응답을 회신한다. 캐시된 리소스가 존재하고 리소스가 변경되지 않았다면 `304 Not Modified` 응답을 회신한다. 리소스가 변경되었다면 새로운 리소스와 함께 `200 OK` 응답을 회신한다.
+  - 조건부 요청 : 캐시를 가지고 있지 않은 경우 `200 OK` 상태로 응답을 회신한다. 캐시된 리소스가 존재하고 리소스가 변경되지 않았다면 `304 Not Modified` 응답을 회신한다. 리소스가 변경되었다면 새로운 리소스와 함께 `200 OK` 응답을 회신한다.
 - **POST** : 서버측에 데이터를 HTTP Body에 담아 웹서버로 전달한다.
 - **PUT** : 리소스 전체를 갱신를 생신한다. 모든 필드 영역이 필요하다. 일부만 전달할 경우 초기값 혹은 `null`로 처리된다.
 - **PATCH** : 리소스의 일부분을 갱신한다. 갱신하려는 일부 필드 영역이 필요하다.
@@ -48,27 +42,27 @@ const http = require('http'); // native 모듈
 // createServer메소드는 1개의 매개변수를 받는다 callback
 // callback은 두개의 매개 변수를 받는다. req,res
 const server = http.createServer((req, res) => {
-    // req 브라우저가 보내는 요청을 뜻하고
-    // res는 req를 받아 응답할 내용이다.
-    console.log(req);
+  // req 브라우저가 보내는 요청을 뜻하고
+  // res는 req를 받아 응답할 내용이다.
+  console.log(req);
 
-    // startline 노드가 알아서 해줄거고
-    // header과 body는 우리가 신경써야한다.
+  // startline 노드가 알아서 해줄거고
+  // header과 body는 우리가 신경써야한다.
 
 
-    // writeHead
-    // status code
-    // mime type이라는 객체를 넘겨줘야한다.
-    res.writeHead(200, {
-        'content-type': 'text/html'
-    });
-    // write메소드로 body를 적는다.
-    res.write('<div>안녕</div>');
-    
-    // res을 끝낸다. 보낸뒤 실행할 콜백함수를 매개변수로 받을 수 있다.
-    res.end(() => {
-        console.log('보냇어')
-;    })
+  // writeHead
+  // status code
+  // mime type이라는 객체를 넘겨줘야한다.
+  res.writeHead(200, {
+    'content-type': 'text/html'
+  });
+  // write메소드로 body를 적는다.
+  res.write('<div>안녕</div>');
+  
+  // res을 끝낸다. 보낸뒤 실행할 콜백함수를 매개변수로 받을 수 있다.
+  res.end(() => {
+    console.log('보냇어');
+  });
 });
 
 // createServer 메소드는 객체를 반환하는데 이 객체에는 listen이라는 메소드ㅡㄹ 포함한다.
@@ -115,7 +109,7 @@ $ curl -v localhost:3000
 
 ```
 res.writeHead(404, {
-    'content-type': 'text/html'
+  'content-type': 'text/html'
 });
 ```
 
