@@ -3,7 +3,7 @@ title: 'about'
 ---
 
 ### WORK EXPERIENCE
-- **UI Develper, [N Tech Service](https://www.nts-corp.com/)** (SEP/2018 ~ Present)
+- **UI Developer, [N Tech Service](https://www.nts-corp.com/)** (SEP/2018 ~ Present)
     - UI Develpment 
     - Using HTML5, CSS, Gulp, React, Webpack
 
