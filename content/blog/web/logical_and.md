@@ -90,7 +90,7 @@ printf("%c", c && d); // 아스키코드의 1번문자
 
 ---
 
-### 참조
+### 참고
 
 - [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/%EB%85%BC%EB%A6%AC_%EC%97%B0%EC%82%B0%EC%9E%90(Logical_Operators))
 - [위키백과](https://ko.wikipedia.org/wiki/%EB%85%BC%EB%A6%AC_%EC%97%B0%EC%82%B0)

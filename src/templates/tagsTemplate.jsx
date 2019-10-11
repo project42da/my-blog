@@ -15,9 +15,9 @@ const Tags = ({ pageContext, data, location }) => {
       <h2 className={style.title}>{tag}</h2>
       <span className={style.tag_result_count}>총 <strong>{totalCount}</strong>개</span>
       <ul>
-        {edges.map(({ node }) => {
+        {edges.map(({ node }, index) => {
           return (
-            <PostItem post={node}/>
+            <PostItem post={node} key={index}/>
           );
         })}
       </ul>
