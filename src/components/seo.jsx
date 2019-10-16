@@ -78,7 +78,11 @@ SEO.defaultProps = {
     { 
       name: `viewport`,
       content: `width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no, viewport-fit=cover`
-    }
+    },
+    {
+      name:"google-site-verification",
+      content:"q7bQmIaybFn1qvCOLf0kKqQ9prsrvPSd4_yiBQ__oRY",
+    },
   ],
   description: ``,
 }
