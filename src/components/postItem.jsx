@@ -12,7 +12,7 @@ const PostItem = props => {
     <article key={post.fields.slug} className={style.post_item}>
       <header>
         <strong className={style.post_item__title}>
-          <Link style={{ boxShadow: `none` }} to={post.fields.slug}>
+          <Link style={{ boxShadow: `none` }} to={post.fields.slug} className={style.post_item__link}>
             {title}
           </Link>
         </strong>

@@ -3,7 +3,7 @@ title: "SSH 기본개념 & SSH 깃헙 연결하기"
 date: "2019-10-29 12:58:00 +0900"
 description: ssh에 대한 기본개념과 ssh github 사용방법
 categories: 네트워크
-tags: ["ssh", "네트워크"]
+tags: ["ssh", "암호화", "네트워크"]
 ---
 
 ![secure](./secure_unsplash.jpg)

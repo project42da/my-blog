@@ -24,7 +24,6 @@
 }
 
 .link_list{
-    color:#f04994;
     float: left;
 
     @media (max-width: 375px){
@@ -35,6 +34,7 @@
 }
 
 .link{
+    color:#f04994;
     position: relative;
     display: inline-block;
     vertical-align: top;
