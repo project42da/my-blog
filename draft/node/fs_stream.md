@@ -220,3 +220,7 @@ class MyDuplex extends Duplex {
   }
 }
 ```
+<!-- 
+### 사용 가능한 환경
+- Microsoft가 Edge 브라우저를 Chromium 기반으로 바꾸겠다고 발표했고, 당연히 지원될 기대도 하지 않는 IE를 제외하면 추후에는 모든 PC 모던 브라우저들이 지원할것으로 판단된다.
+- 모바일에서는 크롬과 오페라는 지원하며 Safari, Firefox 및 기타등등 브라우저들은 지원하고 있지 않다. -->
