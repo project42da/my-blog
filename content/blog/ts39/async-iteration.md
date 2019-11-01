@@ -28,6 +28,46 @@ tags: ["ts39", "async", 'iterator', 'es9']
 
 <br>
 
+## Async iterators 와 async iterables
+
+비동기 이터레이터(Async Iterator)는 `next()` 메소드가 `{ value, done }`을 위해 프로미스를 반환한다는 것을 제외하면 기존의 동기식 이터레이터와 유사하다.
+Promise를 반환해야 하는 이유는 위에서 언급한 바와 같이 다음 값과 done 상태를 모두 알 수 없기 때문이다.
+
+```js
+const { value, done } = syncIterator.next();
+asyncIterator.next().then(({ value, done }) => /* ... */);
+```
+
+<br>
+
+또한 비동기 이터레이터를 널리 사용하기 위하여 사용될 새로운 심볼(symbol)인 `Symbol.asyncIterator`를 소개한다. 
+이전에 임의의 객체가 `Symbol.iterator`를 사용하여 일반 동기식 이터러블인 것을 알려줬던것 처럼, 비동기 이터러블임을 알려준다. 
+이것을 사용할 수 있는 클래스의 예는 아마도 읽을 수 있는 스트림(readable stream)이 될것이다.
+
+<br>
+
+비동기 이터레이터의 내부 설계에는 **요청 큐**의 설계가 포함되어 있다. 이전 요청의 결과가 해결되기 전에 이터레이터 메소드가 여러 번 호출 될 수 있으므로, 모든 이전 요청 조작이 완료 될 때까지 각 메소드 호출을 내부적으로 큐에 넣어야한다.
+
+<br>
+
+## The async iteration statement: `for-await-of`
+
+We introduce a variation of the `for-of` iteration statement which iterates over async iterable objects. An example usage would be:
+
+```js
+for await (const line of readLines(filePath)) {
+  console.log(line);
+}
+```
+
+비동기 `for-of` 문은 비동기 함수, 비동기 제네레이터 함수(뒤에 보게될)와 함께 사용 가능하다.
+
+During execution, an async iterator is created from the data source using the `[Symbol.asyncIterator]()` method.
+
+Each time we access the next value in the sequence, we implicitly `await` the promise returned from the iterator method.
+
+<br>
+
 ## Async generator 함수
 비동기 제네레이터 함수는은 제네레이터의 기능과 유사하지만 다음과 같은 차이점이 있다:
 - 호출시에 직접 `{value, done}`을 반환하는것 대신에, `next`, `throw`, `return` 메소드를 가진 **비동기 제네레이터 객체**를 반환하며, `return`(Promise)을 통해서 `{ value, done }`을 반환한다.
