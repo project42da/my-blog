@@ -3,16 +3,23 @@ title: "ES9: Async Iteration"
 date: "2019-10-29 12:58:00 +0900"
 description: 대칭키, 공개키 방식에 대한 간단한 개념
 categories: 네트워크
-tags: ["ts39", "async", 'iterator', 'es9']
+tags: ["tc39", "async", 'iterator', 'es9']
 ---
 
 ![logo](./logo.png)
 
 <br>
 
+배경지식 🚩
+- **이터러블(Iterable)**은 `[Symbol.iterator]()` 메소드가 구현된 객체를 말하며, 이 메소드는 이터레이터(Iterator)를 반환한다.
+- **이터레이터(Iterator)**는 `{ value, done }` 쌍의 이터레이터 결과 객체(Iterater Result Object)를 반환하는 `next`메소드가 구현되어있다.
+- **제네레이터 함수(Generator functions)**는 호출시점에는 코드블록이 실행되지 않으며 제네레이터(Genrator) 객체를 반환한다. 제네레이터 객체는 이터러블과 이터레이터 인터페이스를 모두 준수한다.
+
+<br>
+
 ## 개요와 동기
 
-이터레이터(Iterator) 인터페이스(ECMAScript 2015에서 소개됨)는 순차적으로 데이터를 접근하는 프로토콜이다. 기본적인 인터페이스는 `{ value, donw }` 튜플을 반환하는 `next()` 메소드가 이며, `done`은 이터레이터가 끝에 도달했는지 여부를 나타내는 boolean, `value`는 수차적으로 산출되는 값을 나타낸다.
+이터레이터(Iterator) 인터페이스(ECMAScript 2015에서 소개됨)는 순차적으로 데이터를 접근하는 프로토콜이다. 기본적인 인터페이스는 `{ value, done }` 튜플을 반환하는 `next()` 메소드가 이며, `done`은 이터레이터가 끝에 도달했는지 여부를 나타내는 boolean, `value`는 수차적으로 산출되는 값을 나타낸다.
 
 <br>
 
@@ -20,7 +27,7 @@ tags: ["ts39", "async", 'iterator', 'es9']
 
 <br>
 
-(프로미스와 이터레이터를 함께 사용하면 비동기 값을 허용하지만, done에서는 동기로 마무리 되기 때문에 충분하지 않다.)
+(프로미스의 반복자도 충분하지 않다. 그 이유는 비동기 결정만 허용할 뿐 아니라, done 상태의 동기 결정까지도 요구하기 때문이다.)
 
 <br>
 
@@ -28,10 +35,9 @@ tags: ["ts39", "async", 'iterator', 'es9']
 
 <br>
 
-## Async iterators 와 async iterables
+## 비동기 이터레이터와 비동기 이터러블(Async iterators and async iterables)
 
-비동기 이터레이터(Async Iterator)는 `next()` 메소드가 `{ value, done }`을 위해 프로미스를 반환한다는 것을 제외하면 기존의 동기식 이터레이터와 유사하다.
-Promise를 반환해야 하는 이유는 위에서 언급한 바와 같이 다음 값과 done 상태를 모두 알 수 없기 때문이다.
+비동기 이터레이터(Async Iterator)는 `next()` 메소드가 `{ value, done }` 쌍을 위한 프로미스(Promise)를 반환한다는 것을 제외하면 기존의 동기식 이터레이터와 유사하다. 위에서 언급했듯이 이터레이터의 다음 값과 done 상태를 모두 알 수 없기 때문에 이터레이터 결과 쌍에 대한 프로미스를 반환해야 한다.
 
 ```js
 const { value, done } = syncIterator.next();
@@ -40,9 +46,8 @@ asyncIterator.next().then(({ value, done }) => /* ... */);
 
 <br>
 
-또한 비동기 이터레이터를 널리 사용하기 위하여 사용될 새로운 심볼(symbol)인 `Symbol.asyncIterator`를 소개한다. 
-이전에 임의의 객체가 `Symbol.iterator`를 사용하여 일반 동기식 이터러블인 것을 알려줬던것 처럼, 비동기 이터러블임을 알려준다. 
-이것을 사용할 수 있는 클래스의 예는 아마도 읽을 수 있는 스트림(readable stream)이 될것이다.
+또한 비동기 이터레이터를 통용되기 위하여 사용될 새로운 심볼(symbol)인 `Symbol.asyncIterator`를 소개한다. 
+이것은 `Symbol.iterator`가 일반 동기식 이터러블인 것을 알려줬던 것과 마찬가지로, 임의의 객체가 비동기 이터러블임을 알려준다. 이것을 사용할 수 있는 클래스의 예는 아마도 읽을 수 있는 스트림(readable stream)이 될것이다.
 
 <br>
 
@@ -50,9 +55,10 @@ asyncIterator.next().then(({ value, done }) => /* ... */);
 
 <br>
 
-## The async iteration statement: `for-await-of`
+## 비동기 반복문: `for-await-of`
 
-We introduce a variation of the `for-of` iteration statement which iterates over async iterable objects. An example usage would be:
+
+비동기 이터러블 객체를 반복하는 `for-of` 반복문의 변형을 소개한다. 사용 예는 다음과 같다:
 
 ```js
 for await (const line of readLines(filePath)) {
@@ -61,24 +67,20 @@ for await (const line of readLines(filePath)) {
 ```
 
 비동기 `for-of` 문은 비동기 함수, 비동기 제네레이터 함수(뒤에 보게될)와 함께 사용 가능하다.
-
-During execution, an async iterator is created from the data source using the `[Symbol.asyncIterator]()` method.
-
-Each time we access the next value in the sequence, we implicitly `await` the promise returned from the iterator method.
+루프를 실행하는동안 `[Symbol.asyncIterator]()`메소드를 사용하여 데이터소스에서 비동기 이터레이터가 생성된다.
+매번 다음값에 접근할때마다 이터레이터 메서드를 통해 반환된 프로미스(Promise)에 `await`가 암시적으로 적용된다.
 
 <br>
 
-## Async generator 함수
-비동기 제네레이터 함수는은 제네레이터의 기능과 유사하지만 다음과 같은 차이점이 있다:
-- 호출시에 직접 `{value, done}`을 반환하는것 대신에, `next`, `throw`, `return` 메소드를 가진 **비동기 제네레이터 객체**를 반환하며, `return`(Promise)을 통해서 `{ value, done }`을 반환한다.
+## 비동기 제네레이터 함수(Async generator functions)
+비동기 제네레이터 함수는 제네레이터의 기능과 유사하지만 다음과 같은 차이점이 있다:
+- 호출시에 직접 `{ value, done }`을 반환하는것 대신에, `next`, `throw`, `return` 메소드를 가진 **비동기 제네레이터 객체**를 반환하며, `return`(Promise)을 통해서 `{ value, done }`을 반환한다.
 - `await` 와 `for-await-of`를 사용할 수 있다.
 -  `yield*`의 동작은 비동기 이터러블(iterables)에 위임을 지원하도록 수정되었다.
 
 <br>
 
 예를 들면 다음과 같다.
-
-<br>
 
 ```js
 async function* readLines(path){
@@ -96,8 +98,10 @@ async function* readLines(path){
 
 이 함수는 비동기 제네레이터 객체를 반환하며, 이전 예제의 `for-await-of`문과 함께 사용 가능하다.
 
+<br>
 
-나만의 예제 코드
+
+### 예시
 
 ```js
 const getRandomTime = (() => {
@@ -147,7 +151,7 @@ async function* parseProfileAll(formData, range){
 
 (async () =>{
   for await (const n of parseProfileAll('hacker', '123123', 10)) {
-    console.log(n);
+    console.log(n); // 매번 루프마다 [Symbol.asyncIterator]()메소드를 통해 반환된, Promise에 암시적으로 await가 적용된다.
   }    
 })();
 ```

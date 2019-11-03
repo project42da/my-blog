@@ -6,7 +6,7 @@ categories: javascript
 tags: ["javascript" ]
 ---
 
-![자바스크립트 로그](./javascript_logo.png)
+![자바스크립트 로그](./logo.png)
 
 <br>
 
@@ -109,8 +109,10 @@ for(let i=0; i<5; i++){
 
 ### 클로저 응용
 
-외부와는 격리되고 함수내에서는 접근 가능한 클로저의 특성을 응용하면 여러가지 유용한 기능들을 만들 수 있다.
-예를 들어 객체안에서는 접근할 수 있지만 외부로부터는 격리되는 **private 필드**를 만들 수도 있다. 
+외부와는 격리되고 함수내에서는 접근 가능한 클로저의 특성을 응용하면 여러가지 유용한 기능들을 만들 수 있다. 
+[React Hooks의 내부가 클로저로 구현되어 동작한다](https://www.netlify.com/blog/2019/03/11/deep-dive-how-do-react-hooks-really-work/)고 한다.
+
+아래 코드는 클로저를 사용하여 객체안에서는 접근할 수 있지만 외부로부터는 격리되는 **private 필드**를 만든것이다.
 
 ```js
 const myInstance = (() => {
@@ -128,8 +130,6 @@ const myInstance = (() => {
 })();
 ```
 > 클로저라는 주제와는 무관하지만 [앞으로는 클래스 내에서 `#`으로 시작하는 필드를 통해 private 필드를 정의](https://github.com/tc39/proposal-class-fields#private-fields)할 수 있게 된다.
-
-또한 [React 16버전에서 추가된 Hooks는 클로저를 기반](../../react/hooks_basic)으로 만들어졌다고 한다.
 
 ---
 
