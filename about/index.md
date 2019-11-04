@@ -11,11 +11,9 @@ title: 'about'
 
 ### SIDE PROJECT
 - [**Infinite Scroll**](https://github.com/project42da/InfiniteScroll)
-    - ES6
-- [**My Read**](https://github.com/project42da/my_read)
-    - react@16, redux, redux-thunk, webpack, style-components
+    - VanilaJS
 - [**Dev Blog**](/)
-    - Gatsby, Sass
+    - Gatsby
 
 <br>
 
