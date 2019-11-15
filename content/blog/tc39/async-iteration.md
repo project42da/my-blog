@@ -3,7 +3,7 @@ title: "ES9: Async Iteration"
 date: "2019-10-29 12:58:00 +0900"
 description: 대칭키, 공개키 방식에 대한 간단한 개념
 categories: 네트워크
-tags: ["tc39", "async", 'iterator', 'es9']
+tags: ["tc39", "async", 'iterator', 'es9', "번역"]
 ---
 
 ![logo](./logo.png)
