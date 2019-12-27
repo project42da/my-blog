@@ -116,6 +116,14 @@ $ ssh user@sever_ip
 # -v 옵션을 사용하면 디버그 모드로 접속과정의 로그를 확인할 수 있다. 
 ```
 
+`-p` 옵션을 사용하면 포트번호를 지정할 수 있다.
+
+```sh
+$ ssh -p [포트] user@server_ip
+# 예
+$ ssh -p 2220 bandit0@bandit.labs.overthewire.org
+```
+
 만약 개인키(`id_rsa`)의 위치를 변경한다면, `-i` 옵션으로 접속하면 된다.
 
 ```sh
