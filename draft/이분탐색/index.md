@@ -176,6 +176,97 @@ var solution = function(isBadVersion) {
   };
 };
 ```
+
+### 피크문제
+
+미드위치에서 왼,오값을 비교했을때 왼쪽이 크면 내리막이다. 도대체 어디서부터 내리막이 시작된건지 찾기 위해 right값을 미드로 바꾼다.
+반대로 오른쪽값이 왼쪽보다 클경우 어디까지가 오르막인지 찾기위해 left값에 mid값을 넣는다. `left < right`로 루프를 반복하며 left값과 right값이 같아지는 시점에 루프가 멈추게 된다. 그시점이 peak이다.
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findPeakElement = function(nums) {
+  let left = 0;
+  let right = nums.length - 1;
+  while(left < right){
+    const mid = ~~(left + (right - left)/2);
+    if(nums[mid] > nums[mid + 1]){ // 왼 > 오
+      right = mid; // 왼쪽
+    } else {
+      left = mid + 1; // 오른쪽
+    }
+  }
+  return left;
+};
+```
+
+### Find Minimum in Rotated Sorted Array
+
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+Find the minimum element.
+
+You may assume no duplicate exists in the array.
+
+**Example 1:**
+
+```
+Input: [3,4,5,1,2] 
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input: [4,5,6,7,0,1,2]
+Output: 0
+```
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// Input: [4,5,6,7,0,1,2]
+// Output: 0
+var findMin = function(nums) {
+  if(nums.length === 0){
+    return -1;
+  }
+  if(nums.length === 1){
+    return nums[0];
+  }
+  
+  let left = 0;
+  let right = nums.length - 1;
+  if(nums[right] > nums[0]){
+    return nums[0];
+  }
+  
+  while(left <= right){
+    const mid = ~~(left + (right - left)/2);
+    if(nums[mid] > nums[mid + 1]){
+      return nums[mid + 1];
+    }
+    if(nums[mid - 1] > nums[mid]){
+      return nums[mid];
+    }
+    
+    if(nums[mid] > nums[0]){
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  
+  return -1;
+};
+```
+
 ## 세번째 템플릿
 
 세번째 탬플릿은 현재 인덱스와 인접한 오른쪽, 왼쪽 인덱스간의 관계에 대한 조건이 있을때 사용된다.
@@ -214,6 +305,8 @@ int binarySearch(vector<int>& nums, int target){
 - Searching Left: right = mid
 - Searching Right: left = mid
 
+
+### 예시 2(못풀었음)
 ```js
 /**
  * @param {number[]} arr
@@ -223,7 +316,7 @@ int binarySearch(vector<int>& nums, int target){
  */
 var findClosestElements = function(arr, len, target) {
   // 구하는 길이가 없거나 arr가 없거나
-  if(arr.length === 0 || len) return [];
+  if(arr.length === 0 || len === 0) return [];
   // 가장작은 값보다 더작음
   if(arr[0] > target){
     return arr.slice(0,len);
@@ -235,12 +328,13 @@ var findClosestElements = function(arr, len, target) {
   
   
   // 3개범위를 가져야 하는 이유는
-  // mid값이 target이 아닐수 있음. 그러면 적당히 3개범위로 멈추고 mid, left, right값으로 어느게 크고 작은지 비교하면서 채워 넣어야함.
+  // mid값이 target이 아닐수 있음. 그러면 적당히 3개범위로 루프를 돌리고 2개범위일때 멈춘다.
+  // 결과적으로 인접한 left, right값이 남게된다.
   
   let left = 0;
   let right = arr.length -1 ;
   let index = -1;
-  while(left <= right){
+  while(left + 1 < right){
     const mid = ~~(left + (right - left)/2);
     if(arr[mid] === target){
       index = mid;
@@ -251,7 +345,33 @@ var findClosestElements = function(arr, len, target) {
       right = mid - 1;
     }
   }
-  
-  return [];
+  const ans = [];
+  if(index !== -1){
+    left = index;
+    right = index + 1;
+  }
+  // console.log(`init`,left,right,len);
+  while(len){
+    if(Math.abs(target - arr[left]) <= Math.abs(target - arr[right])){
+      if(left >= 0){
+        ans.push(arr[left])
+        left--  
+      } else if(right <= arr.length - 1){
+        ans.push(arr[right])
+        right++;
+      }
+    } else {
+      if(right <= arr.length - 1){
+        ans.push(arr[right])
+        right++;
+      } else if(left >= 0){
+        ans.push(arr[left])
+        left--  
+      }
+    }
+    len--;
+    // console.log(`left:${left},right:${right},len:${len}, ans:${ans}`);
+  }
+  return ans.sort((a,b) => a-b);
 };
 ```
