@@ -10,12 +10,12 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title;
     const { previous, next } = this.props.pageContext;
     const metaDiscription = `${post.frontmatter.title} ${post.frontmatter.tags ? post.frontmatter.tags.toString() : ''} ${post.frontmatter.description ? post.frontmatter.description : ''} ${post.excerpt}`;
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={ metaDiscription }
+          keyword={post.frontmatter.keyword || ''}
         />
         <article className={style.wrap}>
           <header className={style.header}>
@@ -61,6 +61,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        keyword
         tags
         category
       }

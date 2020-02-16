@@ -1,7 +1,8 @@
 ---
 title: "HTTP 캐시 (HTTP Cache)"
 date: "2020-02-11 12:58:00 +0900"
-description: http 기본개념. message, method, mimetype 등...
+description: '캐시는 자주 쓰이는 문서의 사본을 자동으로 보관하는 HTTP 장치이다. 웹 요청이 캐시에 도착했을 때, 캐시된 사본이 존재한다면, 그 문서는 origin 서버가 아닌 캐시로부터 제공된다. 이를 통해 다음과 같은 이점을 가져온다. - 필요한 데이터 전송을 줄여 네트워킹 비용을 줄여준다. - 거리로 인한 지연시간을 줄여 웹페이지를 빨리 불러올 수 있게 된다. - 서버에 대한 요청을 줄여 서버의 부하를 줄인다.'
+keyword: 'HTTP 캐시, HTTP Cache, HTTP, 캐싱, HTTP 재확인, http 신선도 검사, If-Modified-Since'
 categories: 네트워크
 tags: ["HTTP", "캐시", "네트워크"]
 ---
@@ -9,7 +10,6 @@ tags: ["HTTP", "캐시", "네트워크"]
 ![Photo by Markus Spiske on Unsplash](./unplash-cache.jpeg)
 
 > Photo by Markus Spiske on Unsplash
-
 
 
 캐시는 **자주 쓰이는 문서의 사본을 자동으로 보관하는 HTTP 장치**이다. 웹 요청이 캐시에 도착했을 때, 캐시된 사본이 존재한다면, 그 문서는 origin 서버가 아닌 캐시로부터 제공된다. 이를 통해 다음과 같은 이점을 가져온다.
