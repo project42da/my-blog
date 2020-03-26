@@ -3,15 +3,16 @@ title: 'about'
 ---
 
 ### WORK EXPERIENCE
-- **UI Developer, [N Tech Service](https://www.nts-corp.com/)** (SEP/2018 ~ Present)
-    - UI Develpment 
-    - Using HTML5, CSS, Gulp, React, Webpack
+- **UI Developer, [N Tech Service](https://www.nts-corp.com/)** (SEP/2018 ~ 2020)
+    - Using HTML5, CSS, Gulp, Javascript, React, Webpack
 
 <br>
 
 ### SIDE PROJECT
+- [**Netflix Copy**](https://netflx-copy.herokuapp.com/)
+    - Typescript, React, Redux, Webpack, Express(SSR)
 - [**Infinite Scroll**](https://github.com/project42da/InfiniteScroll)
-    - VanilaJS
+    - VanilaJS, Webpack
 - [**Dev Blog**](/)
     - Gatsby
 
